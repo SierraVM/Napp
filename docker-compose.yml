@@ -1,0 +1,17 @@
+version: '3.3'
+
+services:
+  napp.js:
+    build:
+      context: .
+      args:
+        UID: ${HOST_UID}
+        GID: ${HOST_GID}
+    volumes:
+      - ./app:/home/${MY_USER_NAME}/app
+    ports:
+      - "8081:80"
+    environment:
+      - HOST_UID=${HOST_UID}
+      - HOST_GID=${HOST_GID}
+      - MY_USER_NAME=${MY_USER_NAME}
